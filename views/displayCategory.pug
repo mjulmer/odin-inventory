@@ -1,0 +1,13 @@
+html 
+  head 
+    title= category.name 
+  body 
+    h1= category.name  
+    a(href="./edit") Edit category details 
+    p= category.desc
+    ul
+      each item in categoryItems 
+        li
+          p= item.name 
+          p= "Quantity: " + item.quantity
+          a(href="/item/" + item.id) View item details
