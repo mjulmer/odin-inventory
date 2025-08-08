@@ -19,11 +19,11 @@ async function editPost(req, res) {
 }
 
 async function createGet(req, res) {
-  console.log("Unimplemented create new category page");
+  res.render("newCategory");
 }
 
 async function createPost(req, res) {
-  console.log("Unimplemented POST create new category");
+  inventoryDb.addCategory(req.body.name, req.body.desc);
   res.redirect("/");
 }
 

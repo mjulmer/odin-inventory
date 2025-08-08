@@ -1,0 +1,11 @@
+html 
+  head 
+    title New category
+  body 
+    h1 Add new category  
+    form(action="/category/create" method="POST") 
+      label(for="name") Name: 
+      input(type="text" id="name" name="name")
+      label(for="desc") Description: 
+      input(type="text" id="desc" name="desc")
+      button Create category

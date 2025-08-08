@@ -41,3 +41,7 @@ export function getCategoryDetailsAndItems(categoryId: number) {
 export function getItemDetails(itemId: number) {
   return categoryItems[0][itemId];
 }
+
+export function addCategory(name, desc) {
+  // TODO implement
+}
