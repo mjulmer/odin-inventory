@@ -1,7 +1,6 @@
 const inventoryDb = require("../db/dataLayer.ts");
 
 async function getCategory(req, res) {
-  console.log("unimplemented get category: ", req.params.category_id);
   const { category, categoryItems } =
     await inventoryDb.getCategoryDetailsAndItems(req.params.category_id);
   res.render("displayCategory", {
