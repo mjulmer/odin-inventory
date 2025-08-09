@@ -28,6 +28,10 @@ const categoryItems = {
   },
 };
 
+export function getCategories() {
+  return categories;
+}
+
 export function getCategoryDetailsAndItems(categoryId: number) {
   return {
     category: categories[categoryId],

@@ -17,7 +17,8 @@ async function editPost(req, res) {
 }
 
 async function createGet(req, res) {
-  console.log("Unimplemented create new item page");
+  const categories = await inventoryDb.getCategories();
+  res.render("createItem", { categories });
 }
 
 async function createPost(req, res) {

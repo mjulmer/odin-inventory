@@ -1,0 +1,26 @@
+html 
+  head 
+    title New item
+  body 
+    h1 Add new item  
+    form(action="/item/create" method="POST") 
+      label(for="name") Name: 
+      input(type="text" id="name" name="name")
+      br
+      label(for="desc") Description: 
+      textinput(type="text" id="desc" name="desc")
+      br
+      fieldset 
+        legend Select relevant categories
+        each category in categories 
+          input(type="checkbox" name=category.id id="category" + category.id)
+          label(for="category" + category.id)= category.name
+          br
+      br
+      label(for="name") Price: 
+      input(type="text" id="price" name="price")
+      br
+      label(for="name") Quantity: 
+      input(type="text" id="quantity" name="quantity")
+      br
+      button Create item
