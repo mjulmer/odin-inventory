@@ -18,7 +18,9 @@
   "homepage": "https://github.com/mjulmer/odin-inventory#readme",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "pg": "^8.16.3",
     "pug": "^3.0.3"
   }
 }
