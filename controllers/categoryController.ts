@@ -10,11 +10,13 @@ async function getCategory(req, res) {
 }
 
 async function editGet(req, res) {
-  console.log("unimplemented get edit category page: ", req.params.category_id);
+  const { category, categoryItems } =
+    await inventoryDb.getCategoryDetailsAndItems(req.params.category_id);
+  res.render("editCategory", { category });
 }
 
 async function editPost(req, res) {
-  console.log("unimplemented POST category edit: ", req.params.category_id);
+  inventoryDb.editCategory(req.body.name, req.body.desc);
   res.redirect("/");
 }
 

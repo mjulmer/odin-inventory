@@ -45,3 +45,7 @@ export function getItemDetails(itemId: number) {
 export function addCategory(name, desc) {
   // TODO implement
 }
+
+export function editCategory(name, desc) {
+  // TODO implement
+}

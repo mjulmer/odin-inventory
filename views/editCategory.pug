@@ -1,0 +1,11 @@
+html 
+  head 
+    title Edit category
+  body 
+    h1= "Edit category \"" + category.name + "\""
+    form(action="/category/" + category.id + "/edit" method="POST") 
+      label(for="name") Name: 
+      input(type="text" id="name" name="name" value=category.name)
+      label(for="desc") Description: 
+      input(type="text" id="desc" name="desc" value=category.desc)
+      button Create category
