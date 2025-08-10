@@ -1,0 +1,11 @@
+html 
+  head 
+    title Inventory home
+  body 
+    h1 Inventory home
+    a(href="/category/create") Add new category 
+    ul
+      each category in categories
+        li
+          span= category.name + " "
+          a(href="/category/" + category.id) (see more)
