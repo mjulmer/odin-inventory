@@ -6,6 +6,8 @@ html
     form(action="/category/" + category.id + "/edit" method="POST") 
       label(for="name") Name: 
       input(type="text" id="name" name="name" value=category.name)
+      br
       label(for="desc") Description: 
-      input(type="text" id="desc" name="desc" value=category.desc)
+      textarea#desc(name="desc" rows="4" cols="30")=category.description
+      br
       button Create category
