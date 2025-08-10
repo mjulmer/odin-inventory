@@ -3,5 +3,8 @@ html
     title= item.name 
   body 
     h1= item.name  
-    p= item.name 
+    a(href="/item/" + item.id + "/edit") Edit item
+    p= item.name + " (Categories:" + item.categories + ")"
+    p= item.description
     p= "Quantity: " + item.quantity
+    p= "Price: " + centsToPriceString(item.price_cents)

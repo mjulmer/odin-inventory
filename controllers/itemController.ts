@@ -1,9 +1,11 @@
 const inventoryDb = require("../db/dataLayer.ts");
+const utils = require("../utils/utils.ts");
 
 async function getItem(req, res) {
   const item = await inventoryDb.getItemDetails(req.params.item_id);
   res.render("displayItem", {
     item: item,
+    centsToPriceString: utils.centsToPriceString,
   });
 }
 
