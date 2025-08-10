@@ -26,21 +26,21 @@ CREATE TABLE IF NOT EXISTS items (
   name TEXT,
   description TEXT,
   categories INTEGER[],
-  price_cents INTEGER,
-  quantity INTEGER
+  quantity INTEGER,
+  price_cents INTEGER
 );
 
-INSERT INTO items (name, description, categories, price_cents, quantity) 
+INSERT INTO items (name, description, categories, quantity, price_cents) 
 VALUES
-  ('Meyer lemon', 'Sweet lemon cross with a unique flavour', '{0}', 3, 1055),
-  ('Howard Pippin apple', 'Excellent early apple', '{0}', 2, 1055),
-  ('Moonglow pear', 'Not as good as Warren', '{0}', 5, 1055),
-  ('Sungold tomato', 'Extremely sweet cherry tomato: vigorous and productive. Bears early. F1 hybrid.', '{1}', 3, 599),
+  ('Meyer lemon', 'Sweet lemon cross with a unique flavour', '{1}', 3, 1055),
+  ('Howard Pippin apple', 'Excellent early apple', '{1}', 2, 1055),
+  ('Moonglow pear', 'Not as good as Warren', '{1}', 5, 1055),
+  ('Sungold tomato', 'Extremely sweet cherry tomato: vigorous and productive. Bears early. F1 hybrid.', '{2}', 3, 599),
   ('Ping tung long eggplant', 'Purple and white Asian eggplant with great flavour and no bitterness', '{1}', 2, 655),
   ('Sparkler corn', 'Sweet corn perfect for eating off the cob or freezing for winter.', '{1}', 5, 155),
-  ('Sweet sultan', 'Unique and unusual pink and white flower', '{2}', 3, 599),
-  ('Galaxy bachelors buttons', 'Dark purple flowers mottled with blue are one of the most striking bachelors buttons weve seen.', '{1, 2}', 2, 555),
-  ('Red flax', 'Sweet pink-red flowers on long stems. Great in a wildflower mix', '{2}', 5, 455);
+  ('Sweet sultan', 'Unique and unusual pink and white flower', '{3}', 3, 599),
+  ('Galaxy bachelors buttons', 'Dark purple flowers mottled with blue are one of the most striking bachelors buttons weve seen.', '{2, 3}', 2, 555),
+  ('Red flax', 'Sweet pink-red flowers on long stems. Great in a wildflower mix', '{3}', 5, 455);
 `;
 
 async function main() {
