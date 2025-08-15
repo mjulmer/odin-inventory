@@ -2,12 +2,12 @@ html
   head 
     title Edit category
   body 
-    h1= "Edit category \"" + category.name + "\""
-    form(action="/category/" + category.id + "/edit" method="POST") 
+    h1= "Edit category \"" + name + "\""
+    form(action="/category/" + id + "/edit" method="POST") 
       label(for="name") Name: 
-      input(type="text" id="name" name="name" value=category.name)
+      input(type="text" id="name" name="name" value=name)
       br
       label(for="desc") Description: 
-      textarea#desc(name="desc" rows="4" cols="30")=category.description
+      textarea#desc(name="desc" rows="4" cols="30")=desc
       br
       button Save changes

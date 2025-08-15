@@ -12,11 +12,19 @@ async function getCategory(req, res) {
 async function editGet(req, res) {
   const { category, categoryItems } =
     await inventoryDb.getCategoryDetailsAndItems(req.params.category_id);
-  res.render("editCategory", { category });
+  res.render("editCategory", {
+    id: req.params.category_id,
+    name: category.name,
+    desc: category.description,
+  });
 }
 
 async function editPost(req, res) {
-  inventoryDb.editCategory(req.body.name, req.body.desc);
+  inventoryDb.editCategory(
+    req.params.category_id,
+    req.body.name,
+    req.body.desc
+  );
   res.redirect("/");
 }
 
