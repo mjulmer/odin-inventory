@@ -8,3 +8,5 @@ html
     p= item.description
     p= "Quantity: " + item.quantity
     p= "Price: " + centsToPriceString(item.price_cents)
+    form(action="/item/" + item.id + "/delete", method="post") 
+      button Delete item

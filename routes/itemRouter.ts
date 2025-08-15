@@ -7,5 +7,6 @@ itemRouter.post("/create", itemController.createPost);
 itemRouter.get("/:item_id", itemController.getItem);
 itemRouter.get("/:item_id/edit", itemController.editGet);
 itemRouter.post("/:item_id/edit", itemController.editPost);
+itemRouter.post("/:item_id/delete", itemController.deleteItem);
 
 module.exports = itemRouter;

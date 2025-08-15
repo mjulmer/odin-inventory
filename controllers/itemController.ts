@@ -56,10 +56,17 @@ async function createPost(req, res) {
   res.redirect("/item/" + newItemId);
 }
 
+async function deleteItem(req, res) {
+  console.log("DELETE");
+  await inventoryDb.deleteItem(req.params.item_id);
+  res.redirect("/");
+}
+
 module.exports = {
   getItem,
   editGet,
   editPost,
   createGet,
   createPost,
+  deleteItem,
 };

@@ -73,6 +73,10 @@ async function editItem(
       WHERE id = ${id}`);
 }
 
+async function deleteItem(id: string) {
+  await pool.query(`DELETE from items WHERE id = ${id}`);
+}
+
 module.exports = {
   getCategories,
   getCategoryDetailsAndItems,
@@ -81,4 +85,5 @@ module.exports = {
   editCategory,
   addItem,
   editItem,
+  deleteItem,
 };
