@@ -5,17 +5,35 @@ async function getItem(req, res) {
   const item = await inventoryDb.getItemDetails(req.params.item_id);
   res.render("displayItem", {
     item: item,
-    centsToPriceString: utils.centsToPriceString,
+    centsToPriceString: utils.centsToPriceStringWithDollarSign,
   });
 }
 
 async function editGet(req, res) {
-  console.log("unimplemented get edit item page: ", req.params.item_id);
+  // Yes, I should get both promises and then render the page once they've
+  // completed rather than waterfalling them.
+  const item = await inventoryDb.getItemDetails(req.params.item_id);
+  const categories = await inventoryDb.getCategories();
+  res.render("editItem", {
+    item: item,
+    categories: categories,
+    centsToPriceString: utils.centsToPriceStringNoUnit,
+  });
 }
 
 async function editPost(req, res) {
-  console.log("unimplemented POST item edit: ", req.params.item_id);
-  res.redirect("/");
+  const categories = Array.isArray(req.body.categories)
+    ? req.body.categories
+    : [req.body.categories];
+  inventoryDb.editItem(
+    req.params.item_id,
+    req.body.name,
+    req.body.desc,
+    categories,
+    req.body.price,
+    req.body.quantity
+  );
+  res.redirect("/item/" + req.params.item_id);
 }
 
 async function createGet(req, res) {
@@ -24,8 +42,18 @@ async function createGet(req, res) {
 }
 
 async function createPost(req, res) {
-  console.log("Unimplemented POST create new item");
-  res.redirect("/");
+  const categories = Array.isArray(req.body.categories)
+    ? req.body.categories
+    : [req.body.categories];
+  const { rows } = await inventoryDb.addItem(
+    req.body.name,
+    req.body.desc,
+    categories,
+    req.body.price,
+    req.body.quantity
+  );
+  const newItemId = rows[0].id;
+  res.redirect("/item/" + newItemId);
 }
 
 module.exports = {

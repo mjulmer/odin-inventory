@@ -1,0 +1,27 @@
+html 
+  head 
+    title Edit item
+  body 
+    h1= "Edit " + item.name  
+    form(action="/item/" + item.id + "/edit" method="POST") 
+      label(for="name") Name: 
+      input(type="text" id="name" name="name" value=item.name)
+      br
+      label(for="desc") Description: 
+      textarea#desc(name="desc" rows="4" cols="30")=item.description
+      br
+      fieldset 
+        legend Relevant categories
+        each category in categories 
+          input(type="checkbox" name="categories" value=category.id id="category" + category.id checked=item.categories.includes(category.id))
+          label(for="category" + category.id)= category.name
+          br
+      br
+      label(for="name") Price: $
+      input(type="text" id="price" name="price" value=centsToPriceString(item.price_cents))
+      br
+      label(for="name") Quantity: 
+      input(type="text" id="quantity" name="quantity" value=item.quantity)
+      br
+      a(href="/item/" + item.id) Discard changes
+      button Save changes
