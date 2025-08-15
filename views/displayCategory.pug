@@ -3,7 +3,8 @@ html
     title= category.name 
   body 
     h1= category.name  
-    a(href="./edit") Edit category details 
+    a(href="./" + category.id + "/edit") Edit category details 
+    
     p= category.desc
     ul
       each item in categoryItems 
@@ -11,3 +12,6 @@ html
           p= item.name 
           p= "Quantity: " + item.quantity
           a(href="/item/" + item.id) View item details
+
+    form(action="./" + category.id + "/delete", method="post") 
+      button Delete category

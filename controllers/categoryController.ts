@@ -37,10 +37,16 @@ async function createPost(req, res) {
   res.redirect("/");
 }
 
+async function deleteCategory(req, res) {
+  inventoryDb.deleteCategory(req.params.category_id);
+  res.redirect("/");
+}
+
 module.exports = {
   getCategory,
   editGet,
   editPost,
   createGet,
   createPost,
+  deleteCategory,
 };

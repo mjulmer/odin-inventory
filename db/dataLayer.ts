@@ -35,6 +35,7 @@ async function addCategory(name, desc) {
 }
 
 async function editCategory(id, name, desc) {
+  console.log({ name, desc, id });
   await pool.query(`UPDATE categories SET name = '${name}', description = '${desc}' 
     WHERE id = ${id}`);
 }
@@ -77,6 +78,25 @@ async function deleteItem(id: string) {
   await pool.query(`DELETE from items WHERE id = ${id}`);
 }
 
+async function deleteCategory(id: string) {
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+    await client.query(
+      `UPDATE items SET categories = array_remove(categories, ${id})`
+    );
+
+    await client.query(`DELETE from categories WHERE id = ${id}`);
+    await client.query("COMMIT");
+  } catch (e) {
+    await client.query("ROLLBACK");
+    throw e;
+  } finally {
+    client.release();
+  }
+}
+
 module.exports = {
   getCategories,
   getCategoryDetailsAndItems,
@@ -86,4 +106,5 @@ module.exports = {
   addItem,
   editItem,
   deleteItem,
+  deleteCategory,
 };
